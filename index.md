@@ -2,6 +2,6 @@
 
 ## Demos
 - [Moving Rectangle](moving_rectangle)
-- [Generative Art] (03-generative_art)
+- [Generative Art](03-generative_art)
 
 ## Projects
