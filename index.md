@@ -1,7 +1,7 @@
 # CS30 Work - Eszter Nemeth 2023
 
 ## Demos
-- [Moving Rectangle](moving_rectangle)
+- [Moving Rectangle](02-moving_rectangle)
 - [Generative Art](03-generative_art)
 
 ## Projects
