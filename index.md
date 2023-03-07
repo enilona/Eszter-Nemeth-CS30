@@ -4,5 +4,6 @@
 - [Moving Rectangle](02-moving_rectangle)
 - [Generative Art](03-generative_art)
 - [Bouncing Balls](04-bouncing_balls)
+- [Cubic Disarray](05-cubic_disarray)
 
 ## Projects
