@@ -5,7 +5,7 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background("white");
-  lotsOfLines(30,30);
+  lotsOfLines(150,800);
 }
 
 function draw() {
