@@ -4,7 +4,7 @@
 
 
 let terrain = [];
-let xOffset = 0;
+let time = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,18 +14,10 @@ function setup() {
 function draw() {
   background(220);
 
-  if (keyIsDown(RIGHT_ARROW)) {
-    xOffset = xOffset +5;
-  }
-  if (keyIsDown(LEFT_ARROW)) {
-    if (xOffset > 5){
-      xOffset = xOffset - 5;  
-    }
-  }
    
   //diplay rectangle
-  for (let i = xOffset; i < xOffset + width; i++) {
-    rect(terrain[i].x - xOffset, height - terrain[i].height, 1, terrain[i].height);
+  for (let i = time; i < time + width; i++) {
+    rect(terrain[i].x - time, height - terrain[i].height, 1, terrain[i].height);
   }
 }
 
