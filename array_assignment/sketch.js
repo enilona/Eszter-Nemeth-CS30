@@ -7,38 +7,45 @@
 
 
 
-let terrain = [];
-let xOffset = 0;
+let change1 = 0;
+let change2 = 100;
+let circles=[];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  spawnRectangles();
+
 }
 
 function draw() {
   background(220);
-   
-  //diplay rectangle
-  for (let i = xOffset; i < xOffset + width; i++) {
-    rect(terrain[i].x - xOffset, height - terrain[i].height, 1, terrain[i].height);
+
+  drawCircle();
+}
+
+function drawCircle(){
+
+
+  for (let y = 0; y < height; y += 25) {
+    for (let x = 0; x < width; x += 25){
+      let x = noise(change1) * width;
+      let y = noise(change2) * height;
+      circle(x,y,25,25);
+      x = x + 1;
+      y = y + 50;
+    }
+    change1 += 0.001;
+    change2 += 0.001;
   }
+
+
 }
 
 
-function spawnRectangles() {
-  for (let i = xOffset; i < xOffset + width; i++){
-    let time = i;
-    for(let x = 0; x < 2000; x++){
-      let h = noise(time) * height;
-      let thisRect = {
-        x: x,
-        height: h,
-      };
-      terrain.push(thisRect);
-      time += 0.002;
-    }   
-  }
-  
-
+function spawnCircle(theX,theY,theSize,thing){
+  let theCircles = {
+    x: theX,
+    y: theY,
+    s:theSize,
+  };
+  thing.push(theCircles);
 }
-
