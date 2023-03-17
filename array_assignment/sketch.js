@@ -13,7 +13,7 @@ let circles=[];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(3)
+  frameRate(3);
 
 }
 
@@ -31,8 +31,8 @@ function drawCircles(){
       let changeAmount1 = random(200,300);
       let changeAmount2 = random(200,300);
       let changeAmount3 = random(200,300);
-      fill(colorThing*changeAmount1,colorThing*500,colorThing*500)
-      circle(x,y,45,45)
+      fill(colorThing*changeAmount1,colorThing*500,colorThing*500);
+      circle(x,y,45,45);
     }
   }
 }
@@ -42,7 +42,7 @@ function justaCircle(){
   let x = noise(change1) * width;
   let y = noise(change2) * height;
   circle(x,y,30);
-  circle(x+30,y,30)
+  circle(x+30,y,30);
   x = x + 1;
   y = y + 1;
   change1 += 0.0001;
