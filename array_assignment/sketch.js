@@ -6,46 +6,71 @@
 // - describe what you did to take this project "above and beyond"
 
 
+let Elements = [];
+let NumberOfCircles = 3;
+let xStart = 30;
+let yStart = 30;
+let yDist = 60;
+let xDist = 60;
+let colorValue = noise(random(100)) * 200;
 
-let change1 = 0;
-let change2 = 100;
-let circles=[];
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  frameRate(3);
+  createCanvas(500, 500);
+  createCircle(Elements);
 
 }
 
 function draw() {
   background(220);
-  drawCircles();
-  //justaCircle();
+  displayCircle();
+  noLoop();
+  
 }
 
-function drawCircles(){
+function displayCircle(){
+  for (i = 0; i < Elements.length; i++){
+    circles = Elements[i]
+    for (j = 0; j < circles.length; j++){
+      C = circles[j];
+      drawCircle(C);
+    }
+  }   
+}
+ 
+function drawCircle(C){
+  fill(C.color);
+  rect(C.x - C.radius/2, C.y - C.radius/2, C.radius, C.radius)
 
-  for (let y = 0; y < height; y += 45) {
-    for (let x = 0; x < width; x += 45){
-      let colorThing = noise(random(200));
-      let changeAmount1 = random(200,300);
-      let changeAmount2 = random(200,300);
-      let changeAmount3 = random(200,300);
-      fill(colorThing*changeAmount1,colorThing*500,colorThing*500);
-      circle(x,y,45,45);
+}
+
+function createCircle(Elements){
+  let StackOfShapes = [];
+  R = 60;
+  // for (i = 0; i <= NumberOfElements; i++){
+    
+  for ( ri = 0; ri < 8; ri++){
+    for ( ci = 0; ci < 8; ci++){
+      y = yStart + ri * yDist;
+      x = xStart + ci * xDist;
+      for (j = 0; j < NumberOfCircles; j++){
+    
+        Rc = R - j*20;
+      
+        theCircle = {
+          x: x, 
+          y: y,
+          radius: Rc,
+    
+          color: color(colorValue, colorValue, colorValue),
+        }  
+        StackOfShapes.push(theCircle);      
+      }
+      Elements.push(StackOfShapes);
     }
   }
 }
+  
 
-function justaCircle(){
-  fill("red");
-  let x = noise(change1) * width;
-  let y = noise(change2) * height;
-  circle(x,y,30);
-  circle(x+30,y,30);
-  x = x + 1;
-  y = y + 1;
-  change1 += 0.0001;
-  change2 += 0.0001;
-  noFill();
-}
+  
+
