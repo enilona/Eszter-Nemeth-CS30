@@ -13,7 +13,7 @@ let rectdiv = 9;
 let perimeterOfRect = 20;
 let Elements = [];
 let rowscols;
-let  theSize = 20;
+let theSize = 20;
 let xStart = 30;
 let yStart = 30;
 let yDist = 60;
