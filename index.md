@@ -9,6 +9,7 @@
 - [Perlin and Timing](08_perlin)
 - [Grid Demo](09_2d_grid)
 - [Color Game](10_color_game)
+- [Game of Life](11_game_of_life)
 
 ## Projects
 - [Arrays and Object Notation](array_assignment)
