@@ -8,7 +8,9 @@
 // explanation: This Generative art peice is designed so that a person can fiddle around with the different values and numbers to get completely different results. the first three grobal variables can be fiddled around with as well as the commented stuff inside the "drawShape" function. The code can also draw circes if the circle is uncommented in the "drawShape" function. It is also interesting to change the "noStroke" function inside the draw loop.
 
 //establishing global variables
+// number of shapes on top of eachother
 let NumberOfShapes = 7;
+//
 let rectdiv = 9;
 let perimeterOfRect = 20;
 let Elements = [];
