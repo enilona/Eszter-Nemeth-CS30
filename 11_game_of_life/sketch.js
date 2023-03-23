@@ -21,7 +21,7 @@ function setup() {
 
 function draw() {
   background(220);
-  if (autoUpdate && frameCount % 10 ===0);{
+  if (autoUpdate && frameCount % 10 ===0){
     grid = updateGrid();
   }
   displayGrid(grid);
@@ -38,7 +38,7 @@ function keyTyped(){
     grid = updateGrid();
   }
   else if (key === "a"){
-    grid = autoUpdate = !autoUpdate;
+    autoUpdate = !autoUpdate;
   }
 }
 
@@ -112,7 +112,7 @@ function displayGrid(grid){
       if (grid[y][x] === 1){
         fill("blue");
       }
-      rect(x*cellSize, y*cellSize, cellSize, cellSize)
+      rect(x*cellSize, y*cellSize, cellSize, cellSize);
     }
   }
 }
@@ -134,9 +134,11 @@ function createRandom2dArray(ROWS, COLS) {
     newGrid.push([]);
     for (let x = 0; x < COLS; x++){
       if (random(100) > 50){
+        newGrid[y].push(0);
+      }
+      else{
         newGrid[y].push(1);
       }
-      newGrid[y].push(0);
     }
   }
   return newGrid;
