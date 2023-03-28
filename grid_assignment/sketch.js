@@ -1,4 +1,4 @@
-// Color switching grid assignment
+// Color switching 2D array assignment
 // Eszter Nemeth
 // 
 
@@ -6,8 +6,8 @@
 
 let grid;
 
-const ROWS = 50;
-const COLS = 50;
+const ROWS = 35;
+const COLS = 35;
 let cellSize;
 
 function setup() {
