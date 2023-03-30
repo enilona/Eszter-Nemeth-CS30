@@ -10,7 +10,6 @@
 //establishing global variables
 // number of shapes on top of eachother
 let NumberOfShapes = 7;
-//
 let rectdiv = 9;
 let perimeterOfRect = 20;
 let Elements = [];
