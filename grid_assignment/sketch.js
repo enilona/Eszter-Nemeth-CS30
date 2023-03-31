@@ -9,6 +9,14 @@ let grid;
 const ROWS = 35;
 const COLS = 35;
 let cellSize;
+let loadFile;
+let theColor;
+
+function preload(){
+  loadFile = "colors_list.txt";
+  theColor = loadStrings(loadFile);
+  
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -30,13 +38,9 @@ function draw() {
 function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     for (let x = 0; x < COLS; x++){
-      // if (grid[y][x] === 1){
-      //   fill("black");
-      // }
-      // else if (grid[y][x] === 0){
-      //   fill("white");
-      // }
-      rect (x*cellSize, y*cellSize, cellSize, cellSize)
+      let x = theColor[7];
+      fill(x);
+      rect (x*cellSize, y*cellSize, cellSize, cellSize);
     }
   }
 }
