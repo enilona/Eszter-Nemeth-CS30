@@ -2,21 +2,27 @@
 // Eszter Nemeth
 // 
 
+https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
 
 
 let grid;
-let numberList = [1,2,3,4,5,6,7,8,9];
+let numberList = [1,2,3,4,5,6,7,8,9,10,11,12,14,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35];
 
-const ROWS = 35;
-const COLS = 35;
+const ROWS = 10;
+const COLS = 10;
 let cellSize;
 let loadFile;
 let theColor;
 let someColor;
+let number;
+let randomNumber;
+let randomNumberList = [];
 
 function preload(){
   loadFile = "colors_list.txt";
   theColor = loadStrings(loadFile);
+  loadFile = "numbersList.txt";
+  number = loadStrings(loadFile);
   
 }
 
@@ -41,11 +47,12 @@ function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     for (let x = 0; x < COLS; x++){
 
-      fill(theColor[7]);
+      let randomNumber = random(numberList);
+    
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
       textAlign(CENTER,CENTER);
-      textSize(20);
-      text(grid[y][x], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
+      textSize(15);
+      text(randomNumber, x*cellSize + cellSize/2, y*cellSize + cellSize/2);
     }
   }
 }
@@ -53,6 +60,9 @@ function displayGrid(){
 function numbersInGrid(){
 
 }
+
+
+
 
 function createRandomGrid(ROWS, COLS) {
   let newGrid = [];
