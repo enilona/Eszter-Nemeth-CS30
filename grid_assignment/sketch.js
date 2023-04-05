@@ -47,7 +47,7 @@ function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     for (let x = 0; x < COLS; x++){
 
-      let randomNumber = random(numberList);
+      //let randomNumber = random(numberList);
     
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
       // textAlign(CENTER,CENTER);
@@ -60,8 +60,6 @@ function displayGrid(){
 function numbersInGrid(){
 
 }
-
-
 
 
 function createRandomGrid(ROWS, COLS) {
