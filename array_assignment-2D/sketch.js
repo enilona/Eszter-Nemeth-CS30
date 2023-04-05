@@ -52,12 +52,10 @@ function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     for (let x = 0; x < COLS; x++){
 
-      //let randomNumber = random(numberLedArrist);
-    
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
       textAlign(CENTER,CENTER);
       textSize(15);
-      text(shuffledArray[x+y], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
+      text(shuffledArray[(ROWS-x)+ (COLS-y)], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
     }
   }
 }
