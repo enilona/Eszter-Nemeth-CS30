@@ -39,7 +39,7 @@ function setup() {
 }
 
 function draw() {
-  background(parseInt(theColor[7]));
+  background(220);
   displayGrid();
 }
 
@@ -50,9 +50,9 @@ function displayGrid(){
       let randomNumber = random(numberList);
     
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
-      textAlign(CENTER,CENTER);
-      textSize(15);
-      text(randomNumber, x*cellSize + cellSize/2, y*cellSize + cellSize/2);
+      // textAlign(CENTER,CENTER);
+      // textSize(15);
+      // text(numberList[x], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
     }
   }
 }
