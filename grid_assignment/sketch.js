@@ -2,11 +2,11 @@
 // Eszter Nemeth
 // 
 
-https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
+//https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
 
 
 let grid;
-let numberList = [1,2,3,4,5,6,7,8,9,10,11,12,14,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35];
+let numberList = [];
 
 const ROWS = 10;
 const COLS = 10;
@@ -15,8 +15,8 @@ let loadFile;
 let theColor;
 let someColor;
 let number;
-let randomNumber;
-let randomNumberList = [];
+let shuffledArray = [];
+let newArray;
 
 function preload(){
   loadFile = "colors_list.txt";
@@ -29,6 +29,11 @@ function preload(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   grid = createRandomGrid(ROWS,COLS);
+
+  numberList = createNumberList(numberList);
+  newArray = [...numberList];
+
+  shuffledArray = shuffleArray(newArray);
 
   if (width < height) {
     cellSize = width/ROWS;
@@ -47,19 +52,33 @@ function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     for (let x = 0; x < COLS; x++){
 
-      //let randomNumber = random(numberList);
+      //let randomNumber = random(numberLedArrist);
     
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
-      // textAlign(CENTER,CENTER);
-      // textSize(15);
-      // text(numberList[x], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
+      textAlign(CENTER,CENTER);
+      textSize(15);
+      text(shuffledArray[x+y], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
     }
   }
 }
 
-function numbersInGrid(){
-
-}
+// using Fisher Yates algorithm
+function shuffleArray(values){
+    let index = values.length,
+      randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (index != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * index);
+      index--;
+  
+      // And swap it with the current element.
+      [values[index], values[randomIndex]] = [values[randomIndex], values[index]];
+    }
+  
+    return values;
+  }
 
 
 function createRandomGrid(ROWS, COLS) {
@@ -77,4 +96,11 @@ function createRandomGrid(ROWS, COLS) {
     }
   }
   return newGrid;
+}
+
+function createNumberList(numbers){
+  for (let i = 0; i < ROWS * COLS; i++){
+    numbers.push(i);
+  }
+  return numbers;
 }
