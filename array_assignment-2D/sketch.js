@@ -19,6 +19,7 @@ let shuffledArray = [];
 let newArray;
 let y1 = 0;
 let x1 = 0;
+let swap;
 
 function preload(){
   loadFile = "colors_list.txt";
@@ -49,26 +50,27 @@ function draw() {
   background(220);
   displayGrid();
   if (key === " "){
-    reorderGrid();
+    reorderGrid(shuffledArray);
   }
 }
 
-function reorderGrid(){
+function reorderGrid(someArray){
   for (let y = 0; y < ROWS; y++){
     for (let x = 0; x < COLS; x++){
-      if (shuffledArray[y][x] > numberList[y][x]){
-        swap       = shuffledArray[y][x];
-        shuffledArray[y][x]   = shuffledArray[y][x+1];
-        shuffledArray[y][x+1] = swap;
+      if (someArray[y][x] > numberList[y][x]){
+        swap = someArray[y][x];
+        someArray[y][x] = shuffledArray[y][x+1];
+        someArray[y][x+1] = swap;
       }
     }
   }
+  return someArray;
 }
 
 function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     //allows the array to look through all the numbers in the tens, twenties, etc
-    y1 = y * 10
+    y1 = y * 10;
     for (let x = 0; x < COLS; x++){
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
       textAlign(CENTER,CENTER);
