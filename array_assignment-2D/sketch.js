@@ -8,8 +8,8 @@
 let grid;
 let numberList = [];
 
-const ROWS = 10;
-const COLS = 10;
+const ROWS = 25;
+const COLS = 25;
 let cellSize;
 let loadFile;
 let theColor;
@@ -20,6 +20,7 @@ let newArray;
 let y1 = 0;
 let x1 = 0;
 let swap;
+let swip;
 
 function preload(){
   loadFile = "colors_list.txt";
@@ -50,21 +51,20 @@ function draw() {
   background(220);
   displayGrid();
   if (key === " "){
-    reorderGrid(shuffledArray);
+    orderGrid();
   }
 }
 
-function reorderGrid(someArray){
-  for (let y = 0; y < ROWS; y++){
-    for (let x = 0; x < COLS; x++){
-      if (someArray[y][x] > numberList[y][x]){
-        swap = someArray[y][x];
-        someArray[y][x] = shuffledArray[y][x+1];
-        someArray[y][x+1] = swap;
+function orderGrid(){
+  for (let y = 0; y < shuffledArray.length; y++){
+      if (shuffledArray[y] > shuffledArray[y+1]){
+        swip = shuffledArray[y];
+        swap = shuffledArray[y+1];
+        shuffledArray[y] = swap;
+        shuffledArray[y+1] = swip;
+        displayGrid;
       }
-    }
   }
-  return someArray;
 }
 
 function displayGrid(){
