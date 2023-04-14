@@ -2,14 +2,13 @@
 // Eszter Nemeth
 // 
 
-//https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
 
 
 let grid;
 let numberList = [];
 
-const ROWS = 25;
-const COLS = 25;
+let ROWS = 10;
+let COLS = 10;
 let cellSize;
 let loadFile;
 let theColor;
@@ -17,34 +16,34 @@ let someColor;
 let number;
 let shuffledArray = [];
 let newArray;
-let y1 = 0;
-let x1 = 0;
 let swap;
 let swip;
+let rgb = [];
 
 function preload(){
   loadFile = "colors_list.txt";
   theColor = loadStrings(loadFile);
-  loadFile = "numbersList.txt";
-  number = loadStrings(loadFile);
-  
+ 
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   grid = createRandomGrid(ROWS,COLS);
-
-  numberList = createNumberList(numberList);
-  newArray = [...numberList];
-
-  shuffledArray = shuffleArray(newArray);
-
   if (width < height) {
     cellSize = width/ROWS;
   }
   else{
     cellSize = height/ROWS;
   }
+
+  //creates a list of numbers
+  numberList = createNumberList(numberList);
+  newArray = [...numberList];
+  //shuffles the list of numbers 
+  shuffledArray = shuffleArray(newArray);
+
+  getRGBvalues();
+
 }
 
 function draw() {
@@ -71,6 +70,7 @@ function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     //allows the array to look through all the numbers in the tens, twenties, etc
     y1 = y * 10;
+    //fill (rgb)
     for (let x = 0; x < COLS; x++){
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
       textAlign(CENTER,CENTER);
@@ -99,19 +99,10 @@ function shuffleArray(values){
 }
 
 
-function createRandomGrid(ROWS, COLS) {
+function createRandomGrid(ROWS) {
   let newGrid = [];
   for (let y = 0; y < ROWS; y++) {
     newGrid.push([]);
-    for (let x =0; x < COLS; x++){
-      if (random(100) < 50){
-        newGrid[y].push(0);
-      }
-      else{
-        newGrid[y].push(1);    
-      }
-    
-    }
   }
   return newGrid;
 }
@@ -121,4 +112,9 @@ function createNumberList(numbers){
     numbers.push(i);
   }
   return numbers;
+}
+
+
+function getRGBvalues(){
+  rgb = theColor[0].split(",");
 }
