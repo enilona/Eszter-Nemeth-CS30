@@ -7,8 +7,8 @@
 let grid;
 let numberList = [];
 
-let ROWS = 10;
-let COLS = 10;
+const ROWS = 10;
+const COLS = 10;
 let cellSize;
 let loadFile;
 let theColor;
@@ -72,7 +72,7 @@ function displayGrid(){
     y1 = y * 10;
     //fill (rgb)
     for (let x = 0; x < COLS; x++){
-      rect (x*cellSize, y*cellSize, cellSize, cellSize);
+      fillRect(x*cellSize, y*cellSize, cellSize, cellSize);
       textAlign(CENTER,CENTER);
       textSize(15);
       text(shuffledArray[x+y1], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
@@ -99,10 +99,19 @@ function shuffleArray(values){
 }
 
 
-function createRandomGrid(ROWS) {
+function createRandomGrid(ROWS, COLS) {
   let newGrid = [];
   for (let y = 0; y < ROWS; y++) {
     newGrid.push([]);
+    for (let x = 0; x < COLS; x++){
+      if (random(100) < 50){
+        newGrid[y].push(0);
+      }
+      else{
+        newGrid[y].push(1);    
+      }
+    
+    }
   }
   return newGrid;
 }
@@ -116,5 +125,8 @@ function createNumberList(numbers){
 
 
 function getRGBvalues(){
-  rgb = theColor[0].split(",");
+  for (let i = 0; i < theColor.length; i++){
+    rgb = theColor[i].split(",");
+  }
+  return rgb;
 }
