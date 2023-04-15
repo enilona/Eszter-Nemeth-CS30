@@ -6,12 +6,13 @@
 
 let grid;
 let numberList = [];
+let baseColors = [[255,0,0],[255,0,255],[0,0,255],[0,255,255],[0,255,0],[255,255,0],[255,0,0]];
 
-const ROWS = 17;
-const COLS = 17;
+const ROWS = 30;
+const COLS = 30;
 let cellSize;
 let loadFile;
-let theColor;
+let theColor = [];
 let colors;
 let numbers;
 let shuffledArray = [];
@@ -22,11 +23,15 @@ let rgb = [];
 
 function preload(){
   loadFile = "colors_list.txt";
-  theColor = loadStrings(loadFile);
+  //theColor = loadStrings(loadFile);
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  // interpolate();
+  theColor = createRGBList();
+
   grid = createRandomGrid(ROWS,COLS);
   if (width < height) {
     cellSize = width/ROWS;
@@ -36,13 +41,11 @@ function setup() {
   }
 
   //creates a list of numbers
-  numberList = createNumberList(numberList);
+  numberList = fillList(numberList);
   newArray = [...numberList];
   //shuffles the list of numbers 
   shuffledArray = shuffleArray(newArray);
-
-  //getRGBvalues();
-
+ 
 }
 
 function draw() {
@@ -53,7 +56,7 @@ function draw() {
   }
 }
 
-///////////////////////////////////////////////////
+
 function orderGrid(){
   toString(shuffledArray);
   for (let y = 0; y < shuffledArray.length-1; y++){
@@ -64,8 +67,18 @@ function orderGrid(){
         shuffledArray[y+1] = swip;
         displayGrid;
       }
+    }
+  for (let y = shuffledArray.length-1; y > 0; y--){
+      if (shuffledArray[y][0] < shuffledArray[y-1][0]){
+        swip = shuffledArray[y];
+        swap = shuffledArray[y-1];
+        shuffledArray[y] = swap;
+        shuffledArray[y-1] = swip;
+        displayGrid;
+    }
   }
 }
+
 
 function displayGrid(){
   for (let y = 0; y < ROWS; y++){
@@ -109,9 +122,9 @@ function createRandomGrid(ROWS, COLS) {
   return newGrid;
 }
 
-function createNumberList(numbers){
+function fillList(numbers){
   for (let i = 0; i < ROWS * COLS; i++){
-    let rgb = theColor[i].split(",");
+    let rgb = theColor[i];
     let r = rgb[0];
     let g = rgb[1];
     let b = rgb[2];
@@ -126,10 +139,35 @@ function createNumberList(numbers){
   return numbers;
 }
 
+function createRGBList(){
+  let red = [];
+  let green = [];
+  let blue = [];
+  for (let i = 0; i < baseColors.length-1; i++){
+    first = baseColors[i];
+    last = baseColors[i+1];
+    red = red.concat(interpolate(first[0],last[0],255));
+    green = green.concat(interpolate(first[1],last[1],255));
+    blue = blue.concat(interpolate(first[2],last[2],255));
+  }
+  let list = [];
+  for (let i = 0; i < red.length; i++){
+    let element = [];
+    element.push(red[i]);
+    element.push(green[i]);
+    element.push(blue[i]);
 
-// function getRGBvalues(){
-//   for (let i = 0; i < theColor.length; i++){
-//     rgb = rgb + theColor[i].split(",");
-//   }
-//   return rgb;
-// }
+    list.push(element);
+  }
+  return list;
+}
+
+function interpolate(start, end, theLength){
+  difference = (end-start)/(theLength-1);
+  let emptyArray = [];
+  for (let i = 0; i < theLength; i++){
+    emptyArray.push(start + i*difference)
+  }
+  return emptyArray;
+}
+
