@@ -55,7 +55,8 @@ function draw() {
 
 ///////////////////////////////////////////////////
 function orderGrid(){
-  for (let y = 0; y < shuffledArray.length; y++){
+  toString(shuffledArray);
+  for (let y = 0; y < shuffledArray.length-1; y++){
       if (shuffledArray[y][0] > shuffledArray[y+1][0]){
         swip = shuffledArray[y];
         swap = shuffledArray[y+1];
@@ -69,9 +70,9 @@ function orderGrid(){
 function displayGrid(){
   for (let y = 0; y < ROWS; y++){
     //allows the array to look through all the numbers in the tens, twenties, etc
-    y1 = y * 10;
+    y1 = y * ROWS;
     for (let x = 0; x < COLS; x++){
-      //fill(shuffledArray[x+y1][1],shuffledArray[x+y1][2],shuffledArray[x+y1][3]);
+      fill(shuffledArray[x+y1][1],shuffledArray[x+y1][2],shuffledArray[x+y1][3]);
       rect(x*cellSize, y*cellSize, cellSize, cellSize);
       textAlign(CENTER,CENTER);
       textSize(15);
