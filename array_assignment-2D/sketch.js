@@ -1,35 +1,35 @@
 // Color switching 2D array assignment
 // Eszter Nemeth
-// 
+// Apr 15 2023
+// Extra for Experts:
+//I learned what interpolation is and how it can be used to enhance my code.
+//
+//Note: I do not has ESlint on my home laptop so there may be errors that I am unaware of. Nonetheless, the code works :)
 
 
 
 let grid;
+//list that holds numbers used to keep track of how the squares are moving
 let numberList = [];
-let baseColors = [[255,0,0],[255,0,255],[0,0,255],[0,255,255],[0,255,0],[255,255,0],[255,0,0]];
+//the basic colors that are interpolated, these numbers can be changed to make the colors look different
+let baseColors = [[255,0,0],[255,0,255],[0,0,255],[0,255,255],[0,255,110],[255,255,0],[255,0,0]];
+//the lower the number the wider the range of colors when displayed
+let interpolationLength = 150;
 
 const ROWS = 30;
 const COLS = 30;
 let cellSize;
-let loadFile;
 let theColor = [];
-let colors;
-let numbers;
 let shuffledArray = [];
 let newArray;
 let swap;
 let swip;
-let rgb = [];
 
-function preload(){
-  loadFile = "colors_list.txt";
-  //theColor = loadStrings(loadFile);
-}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
-  // interpolate();
+  
+  //creates the list of RGB values
   theColor = createRGBList();
 
   grid = createRandomGrid(ROWS,COLS);
@@ -51,14 +51,16 @@ function setup() {
 function draw() {
   background(220);
   displayGrid();
+  //the grid will begin to order itself when the space key is pressed
   if (key === " "){
     orderGrid();
   }
 }
 
-
+//puts the colors in order based on RGB value
 function orderGrid(){
-  toString(shuffledArray);
+  
+  //looks through the entire grid and switches the squares if they are not in order(works from top to bottom)
   for (let y = 0; y < shuffledArray.length-1; y++){
       if (shuffledArray[y][0] > shuffledArray[y+1][0]){
         swip = shuffledArray[y];
@@ -68,6 +70,7 @@ function orderGrid(){
         displayGrid;
       }
     }
+  //looks through the entire grid and switches the squares if they are not in order(works from bottom to top)
   for (let y = shuffledArray.length-1; y > 0; y--){
       if (shuffledArray[y][0] < shuffledArray[y-1][0]){
         swip = shuffledArray[y];
@@ -85,16 +88,19 @@ function displayGrid(){
     //allows the array to look through all the numbers in the tens, twenties, etc
     y1 = y * ROWS;
     for (let x = 0; x < COLS; x++){
+      //fills the grid with color
       fill(shuffledArray[x+y1][1],shuffledArray[x+y1][2],shuffledArray[x+y1][3]);
       rect(x*cellSize, y*cellSize, cellSize, cellSize);
-      textAlign(CENTER,CENTER);
-      textSize(15);
-      text(shuffledArray[x+y1][0], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
+
+      //this part is now unecessary however I left it in because it helped me find issues that I had with the code
+      // textAlign(CENTER,CENTER);
+      // textSize(15);
+      // text(shuffledArray[x+y1][0], x*cellSize + cellSize/2, y*cellSize + cellSize/2);
     }
   }
 }
 
-// using Fisher Yates algorithm
+// using Fisher Yates algorithm to shuffle the values in the array
 function shuffleArray(values){
   let index = values.length,
     randomIndex;
@@ -111,7 +117,7 @@ function shuffleArray(values){
   return values;
 }
 
-
+//adapted from one of the demos in class to create a grid
 function createRandomGrid(ROWS, COLS) {
   let newGrid = [];
   for (let y = 0; y < ROWS; y++) {
@@ -122,6 +128,7 @@ function createRandomGrid(ROWS, COLS) {
   return newGrid;
 }
 
+//fills the list with the rgb values
 function fillList(numbers){
   for (let i = 0; i < ROWS * COLS; i++){
     let rgb = theColor[i];
@@ -139,6 +146,7 @@ function fillList(numbers){
   return numbers;
 }
 
+//creates the list of RGB values
 function createRGBList(){
   let red = [];
   let green = [];
@@ -146,9 +154,9 @@ function createRGBList(){
   for (let i = 0; i < baseColors.length-1; i++){
     first = baseColors[i];
     last = baseColors[i+1];
-    red = red.concat(interpolate(first[0],last[0],255));
-    green = green.concat(interpolate(first[1],last[1],255));
-    blue = blue.concat(interpolate(first[2],last[2],255));
+    red = red.concat(interpolate(first[0],last[0],interpolationLength));
+    green = green.concat(interpolate(first[1],last[1],interpolationLength));
+    blue = blue.concat(interpolate(first[2],last[2],interpolationLength));
   }
   let list = [];
   for (let i = 0; i < red.length; i++){
@@ -162,6 +170,7 @@ function createRGBList(){
   return list;
 }
 
+//fills in the list in between the values that are give with the baseColors
 function interpolate(start, end, theLength){
   difference = (end-start)/(theLength-1);
   let emptyArray = [];
