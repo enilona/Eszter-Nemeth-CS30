@@ -152,13 +152,16 @@ function createRGBList(){
   let green = [];
   let blue = [];
   for (let i = 0; i < baseColors.length-1; i++){
+    //start and end values for interpolation
     first = baseColors[i];
     last = baseColors[i+1];
+    //interpolating each color
     red = red.concat(interpolate(first[0],last[0],interpolationLength));
     green = green.concat(interpolate(first[1],last[1],interpolationLength));
     blue = blue.concat(interpolate(first[2],last[2],interpolationLength));
   }
   let list = [];
+  //adding interpolated values to a list
   for (let i = 0; i < red.length; i++){
     let element = [];
     element.push(red[i]);
