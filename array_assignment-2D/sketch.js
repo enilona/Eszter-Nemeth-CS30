@@ -14,10 +14,11 @@ let numberList = [];
 //the basic colors that are interpolated, these numbers can be changed to make the colors look different
 let baseColors = [[255,0,0],[255,0,255],[0,0,255],[0,255,255],[0,255,110],[255,255,0],[255,0,0]];
 //the lower the number the wider the range of colors when displayed
-let interpolationLength = 150;
+let interpolationLength = 500;
 
-const ROWS = 30;
-const COLS = 30;
+//the ROWS and COLS always need to be <= the square root of the (interpolationLength * 6)
+const ROWS = 54;
+const COLS = 54;
 let cellSize;
 let theColor = [];
 let shuffledArray = [];
@@ -71,15 +72,15 @@ function orderGrid(){
       }
     }
   //looks through the entire grid and switches the squares if they are not in order(works from bottom to top)
-  for (let y = shuffledArray.length-1; y > 0; y--){
-      if (shuffledArray[y][0] < shuffledArray[y-1][0]){
-        swip = shuffledArray[y];
-        swap = shuffledArray[y-1];
-        shuffledArray[y] = swap;
-        shuffledArray[y-1] = swip;
-        displayGrid;
-    }
-  }
+  // for (let y = shuffledArray.length-1; y > 0; y--){
+  //     if (shuffledArray[y][0] < shuffledArray[y-1][0]){
+  //       swip = shuffledArray[y];
+  //       swap = shuffledArray[y-1];
+  //       shuffledArray[y] = swap;
+  //       shuffledArray[y-1] = swip;
+  //       displayGrid;
+  //   }
+  // }
 }
 
 
@@ -175,9 +176,11 @@ function createRGBList(){
 
 //fills in the list in between the values that are give with the baseColors
 function interpolate(start, end, theLength){
+  //how much the numbers should increase by
   difference = (end-start)/(theLength-1);
   let emptyArray = [];
   for (let i = 0; i < theLength; i++){
+    //giving the interpolated numbers to the array
     emptyArray.push(start + i*difference)
   }
   return emptyArray;
