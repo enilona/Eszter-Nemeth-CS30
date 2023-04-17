@@ -23,8 +23,11 @@ let cellSize;
 let theColor = [];
 let shuffledArray = [];
 let newArray;
+let y1;
 let swap;
 let swip;
+let first;
+let last;
 let choice;
 let type = 1;
 
@@ -63,49 +66,49 @@ function draw() {
 // Gets user input
 function userInput(){
   let choice = prompt("Do you want bubble sort or magic bubble sort? Type 'bubble' or 'magic'");
-  if (choice = "bubble"){
+  if (choice === "bubble"){
     type = 0;
   }
-  if (choice = "magic"){
+  if (choice === "magic"){
     type = 1;
   }
 }
 
 //puts the colors in order based on RGB value
 function orderGrid(){
-  if (type = 0){
+  if (type === 0){
   //looks through the entire grid and switches the squares if they are not in order(works from top to bottom)
-  for (let y = 0; y < shuffledArray.length-1; y++){
-    if (shuffledArray[y][0] > shuffledArray[y+1][0]){
-      swip = shuffledArray[y];
-      swap = shuffledArray[y+1];
-      shuffledArray[y] = swap;
-      shuffledArray[y+1] = swip;
-      displayGrid;
+    for (let y = 0; y < shuffledArray.length-1; y++){
+      if (shuffledArray[y][0] > shuffledArray[y+1][0]){
+        swip = shuffledArray[y];
+        swap = shuffledArray[y+1];
+        shuffledArray[y] = swap;
+        shuffledArray[y+1] = swip;
+        displayGrid;
+      }
     }
   }
-  }
-  else if (type = 1){
+  else if (type === 1){
     //looks through the entire grid and switches the squares if they are not in order(works from top to bottom)
     for (let y = 0; y < shuffledArray.length-1; y++){
-        if (shuffledArray[y][0] > shuffledArray[y+1][0]){
-          swip = shuffledArray[y];
-          swap = shuffledArray[y+1];
-          shuffledArray[y] = swap;
-          shuffledArray[y+1] = swip;
-          displayGrid;
-        }
+      if (shuffledArray[y][0] > shuffledArray[y+1][0]){
+        swip = shuffledArray[y];
+        swap = shuffledArray[y+1];
+        shuffledArray[y] = swap;
+        shuffledArray[y+1] = swip;
+        displayGrid;
       }
+    }
     //looks through the entire grid and switches the squares if they are not in order(works from bottom to top)
     //I came up with the idea of doing bubble sort on the grid from two different directions
     //I recommend uncommenting the code below because it looks very cool!
     for (let y = shuffledArray.length-1; y > 0; y--){
-        if (shuffledArray[y][0] < shuffledArray[y-1][0] && type === 1){
-          swip = shuffledArray[y];
-          swap = shuffledArray[y-1];
-          shuffledArray[y] = swap;
-          shuffledArray[y-1] = swip;
-          displayGrid;
+      if (shuffledArray[y][0] < shuffledArray[y-1][0] && type === 1){
+        swip = shuffledArray[y];
+        swap = shuffledArray[y-1];
+        shuffledArray[y] = swap;
+        shuffledArray[y-1] = swip;
+        displayGrid;
       }
     }
   }

@@ -78,15 +78,15 @@ function orderGrid(){
   //looks through the entire grid and switches the squares if they are not in order(works from bottom to top)
   // I came up with the idea of doing bubble sort on the grid from two different starting points
   //I recommend uncommenting the code below because it looks very cool!
-  // for (let y = shuffledArray.length-1; y > 0; y--){
-  //     if (shuffledArray[y][0] < shuffledArray[y-1][0]){
-  //       swip = shuffledArray[y];
-  //       swap = shuffledArray[y-1];
-  //       shuffledArray[y] = swap;
-  //       shuffledArray[y-1] = swip;
-  //       displayGrid;
-  //   }
-  // }
+  for (let y = shuffledArray.length-1; y > 0; y--){
+    if (shuffledArray[y][0] < shuffledArray[y-1][0]){
+      swip = shuffledArray[y];
+      swap = shuffledArray[y-1];
+      shuffledArray[y] = swap;
+      shuffledArray[y-1] = swip;
+      displayGrid;
+    }
+  }
 }
 
 
