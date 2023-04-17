@@ -12,6 +12,7 @@
 - [Game of Life](11_game_of_life)
 - [Character in Grid](12_character_in_grid)
 - [Sudoku Blueprint](13_sudoku)
+- [Walker OOP](14_walker)
 
 ## Projects
 - [Arrays and Object Notation](array_assignment)

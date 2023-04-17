@@ -3,8 +3,6 @@
 // Apr 15 2023
 // Extra for Experts:
 //I learned what interpolation is and how it can be used to enhance my code.
-//
-//Note: I do not has ESlint on my home laptop so there may be errors that I am unaware of. Nonetheless, the code works :)
 
 
 

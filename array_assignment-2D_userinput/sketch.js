@@ -2,9 +2,8 @@
 // Eszter Nemeth
 // Apr 15 2023
 // Extra for Experts:
-//I learned what interpolation is and how it can be used to enhance my code.
-//
-//Note: I do not has ESlint on my home laptop so there may be errors that I am unaware of. Nonetheless, the code works :)
+//I learned what interpolation is and how it can be used to enhance my code. I also learned how to tak user input.
+
 
 
 
@@ -29,6 +28,7 @@ let swip;
 let first;
 let last;
 let choice;
+let difference;
 let type = 1;
 
 function setup() {
@@ -154,10 +154,8 @@ function createRandomGrid(ROWS, COLS) {
   let newGrid = [];
   for (let y = 0; y < ROWS; y++) {
     newGrid.push([]);
-    for (let x = 0; x < COLS; x++){
-    }
+    return newGrid;
   }
-  return newGrid;
 }
 
 //fills the list with the rgb values
@@ -169,9 +167,9 @@ function fillList(numbers){
     let b = rgb[2];
     let element = [];
     element.push(i);
-    element.push(r)
-    element.push(g)
-    element.push(b)
+    element.push(r);
+    element.push(g);
+    element.push(b);
 
     numbers.push(element);
   }
@@ -205,6 +203,7 @@ function createRGBList(){
   return list;
 }
 
+
 //fills in the list in between the values that are give with the baseColors
 function interpolate(start, end, theLength){
   //how much the numbers should increase by
@@ -212,7 +211,7 @@ function interpolate(start, end, theLength){
   let emptyArray = [];
   for (let i = 0; i < theLength; i++){
     //giving the interpolated numbers to the array
-    emptyArray.push(start + i*difference)
+    emptyArray.push(start + i*difference);
   }
   return emptyArray;
 }
