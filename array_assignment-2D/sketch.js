@@ -23,8 +23,12 @@ let cellSize;
 let theColor = [];
 let shuffledArray = [];
 let newArray;
+let y1;
 let swap;
 let swip;
+let first;
+let last;
+let difference;
 
 
 function setup() {
@@ -63,14 +67,14 @@ function orderGrid(){
   
   //looks through the entire grid and switches the squares if they are not in order(works from top to bottom)
   for (let y = 0; y < shuffledArray.length-1; y++){
-      if (shuffledArray[y][0] > shuffledArray[y+1][0]){
-        swip = shuffledArray[y];
-        swap = shuffledArray[y+1];
-        shuffledArray[y] = swap;
-        shuffledArray[y+1] = swip;
-        displayGrid;
-      }
+    if (shuffledArray[y][0] > shuffledArray[y+1][0]){
+      swip = shuffledArray[y];
+      swap = shuffledArray[y+1];
+      shuffledArray[y] = swap;
+      shuffledArray[y+1] = swip;
+      displayGrid;
     }
+  }
   //looks through the entire grid and switches the squares if they are not in order(works from bottom to top)
   // I came up with the idea of doing bubble sort on the grid from two different starting points
   //I recommend uncommenting the code below because it looks very cool!
@@ -125,8 +129,6 @@ function createRandomGrid(ROWS, COLS) {
   let newGrid = [];
   for (let y = 0; y < ROWS; y++) {
     newGrid.push([]);
-    for (let x = 0; x < COLS; x++){
-    }
   }
   return newGrid;
 }
@@ -140,9 +142,9 @@ function fillList(numbers){
     let b = rgb[2];
     let element = [];
     element.push(i);
-    element.push(r)
-    element.push(g)
-    element.push(b)
+    element.push(r);
+    element.push(g);
+    element.push(b);
 
     numbers.push(element);
   }
@@ -183,7 +185,7 @@ function interpolate(start, end, theLength){
   let emptyArray = [];
   for (let i = 0; i < theLength; i++){
     //giving the interpolated numbers to the array
-    emptyArray.push(start + i*difference)
+    emptyArray.push(start + i*difference);
   }
   return emptyArray;
 }
