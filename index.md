@@ -13,6 +13,7 @@
 - [Character in Grid](12_character_in_grid)
 - [Sudoku Blueprint](13_sudoku)
 - [Walker OOP](14_walker)
+- [Fireworks OOP](15_fireworks)
 
 ## Projects
 - [Arrays and Object Notation](array_assignment)
