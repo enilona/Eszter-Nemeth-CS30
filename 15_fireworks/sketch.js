@@ -61,10 +61,3 @@ function spawnSpark(){
   let theSpark = new Spark(mouseX, mouseY, random(-5,5), random(-5,5),);
   fireworks.push(theSpark);
 }
-
-circleThing(){
-  for (let i =0; i < 360; i++){
-    this.x = Math.cos(360/i);
-    this.y = Math.sin(360/i);
-  }
-}
