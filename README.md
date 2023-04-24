@@ -1,2 +1,2 @@
-# cs30-stuff
+# Eszter-Nemeth-CS30
 code for Computer Science 30 
