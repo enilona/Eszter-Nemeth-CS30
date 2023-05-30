@@ -16,6 +16,7 @@
 - [Fireworks OOP](15_fireworks)
 - [Ball Array OOP](16_ball_array)
 - [Using Timers](17_timers)
+- [Fractal Circles](18_fractal_circles)
 
 ## Projects
 - [Arrays and Object Notation](array_assignment)
